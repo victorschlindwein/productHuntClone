@@ -16,18 +16,8 @@ mongoose.connect('mongodb://localhost:27017/nodeapi',
 //Importando os models do banco de dados
 requireDir('./src/models');
 
-const Product = mongoose.model('Product');
-
 //Primeira rota
-app.get('/', (req, res) => {
-  Product.create({
-    title: 'React',
-    description: 'Aplicacao front-end',
-    url: 'www.github.com/users/Dizzysch'
-  })
-
-  return res.send("Serase deu?");
-});
+app.use('/api', require('./src/routes'));
 
 //Definindo porta da aplicacao
 app.listen(3001);
